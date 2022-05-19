@@ -7,10 +7,10 @@ one:
   price: 9.99
 
 two:
-  title: MyString
-  description: MyText
-  image_url: ruby.jpg
-  price: 9.99
+  title: Lorem Ipsum,
+  description: Wibbles are fun!,
+  image_url: ruby.jpg,
+  price: 19.95
 
 ruby:
   title: Programming Ruby 3.0
