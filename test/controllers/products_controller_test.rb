@@ -3,7 +3,7 @@ require "test_helper"
 class ProductsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @product = products(:one)
-    @update = products(:two)
+    @update = products(:two).attributes
   end
 
   test "should get index" do
@@ -36,7 +36,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update product" do
-    put "/products/#{@product.id}", params: { id: @product.id, product: @update }
+    put "/products/#{@product.id}", params: { product: @update.merge(id: @product.id, title: "xxx") }
     assert_redirected_to product_url(@product)
   end
 

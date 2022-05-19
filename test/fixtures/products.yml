@@ -7,9 +7,9 @@ one:
   price: 9.99
 
 two:
-  title: Lorem Ipsum,
-  description: Wibbles are fun!,
-  image_url: ruby.jpg,
+  title: Lorem Ipsum
+  description: Wibbles are fun!
+  image_url: ruby.jpg
   price: 19.95
 
 ruby:
