@@ -3,6 +3,8 @@
 one:
   product_id: 1
   cart_id: 1
+  product: ruby
+  cart: one
 
 two:
   product_id: 1
