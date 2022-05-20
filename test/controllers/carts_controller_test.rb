@@ -40,9 +40,9 @@ class CartsControllerTest < ActionDispatch::IntegrationTest
 
   test "should destroy cart" do
     assert_difference("Cart.count", -1) do
-      delete cart_url(@cart)
+      delete :destroy, params: { id: @cart.to_param, cart_id: @cart.id }
     end
 
-    assert_redirected_to carts_url
+    assert_redirected_to store_path
   end
 end
