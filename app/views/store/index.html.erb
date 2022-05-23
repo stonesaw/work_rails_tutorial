@@ -12,6 +12,10 @@
     <div class="price_line">
       <span class="price"><%= number_to_currency(product.price) %></span>
       <%= button_to('カートに入れる', line_items_path(product_id: product), remote: true) %>
+      
+      <%#= form_with url: line_items_path(product_id: product) do |form| %>
+        <%#= form.submit "カートに入れる" %>
+      <%# end %>
     </div>
   </div>
 <% end %>

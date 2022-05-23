@@ -25,13 +25,14 @@ class LineItemsController < ApplicationController
     product = Product.find(params[:product_id])
     @line_item = @cart.add_product(product.id)
 
-    logger.debug("create (カートに入れる)")
-
     respond_to do |format|
       if @line_item.save
+        # Broadcast to the "messages_channel" channel (asynchronous)
+        # @line_item.broadcast_prepend_later_to("messages_channel")
+
         format.html { redirect_to store_url }
-        format.js   { @current_item = @line_item }
         format.json { render :show, status: :created, location: @line_item }
+        format.turbo_stream
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @line_item.errors, status: :unprocessable_entity }

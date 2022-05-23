@@ -1,6 +1,11 @@
 <div class="cart_title">カート</div>
 <table>
-  <%= render cart.line_items %>
+  <div id="line_item">
+    <%= form_with do |form| %>
+      <%= render partial: "line_items/line_item", locals: { line_item: cart.line_items.to_a } %>
+    <% end %>
+  </div>
+
   <tr class="total_line">
     <td colspan="2">合計</td>
     <td class="total_cell"><%= number_to_currency(cart.total_price) %></td>
