@@ -1,0 +1,13 @@
+<!-- create.turbo_stream.erb -->
+
+<!-- サンプル「id="new_message" の要素をブロックの内容で書き換える」 -->
+<%= turbo_stream.replace "new_message" do %>
+  <%= form_with model: LineItem.new do |form| %>
+    <%# = render partial: "form", locals: { form: form } %>
+  <% end %>
+<% end %>
+
+<!-- 「id="messages" の要素の子要素先頭にブロックの内容を差し込む」 -->
+<%= turbo_stream.prepend "product-entry-#{@line_item.product.id}" do %>
+  <span>追加しましたよ</span>
+<% end %>
