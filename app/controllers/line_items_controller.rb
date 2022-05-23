@@ -25,10 +25,12 @@ class LineItemsController < ApplicationController
     product = Product.find(params[:product_id])
     @line_item = @cart.add_product(product.id)
 
+    logger.debug("create (カートに入れる)")
+
     respond_to do |format|
       if @line_item.save
         format.html { redirect_to store_url }
-        format.js   { @current_item = @line_item; }
+        format.js   { @current_item = @line_item }
         format.json { render :show, status: :created, location: @line_item }
       else
         format.html { render :new, status: :unprocessable_entity }
