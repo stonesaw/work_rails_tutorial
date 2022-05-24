@@ -27,8 +27,12 @@ class LineItemsController < ApplicationController
 
     respond_to do |format|
       if @line_item.save
-        format.html { redirect_to @line_item.cart }
+        # Broadcast to the "messages_channel" channel (asynchronous)
+        # @line_item.broadcast_prepend_later_to("messages_channel")
+
+        format.html { redirect_to store_url }
         format.json { render :show, status: :created, location: @line_item }
+        format.turbo_stream
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @line_item.errors, status: :unprocessable_entity }
