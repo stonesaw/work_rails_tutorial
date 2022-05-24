@@ -1,9 +1,7 @@
-<%= turbo_stream.replace "cart" do %>
-  <div id="cart">
-    <% if @cart %>
+<%= turbo_stream.update "cart" do %>
+  <% if @cart %>
     <%= render @cart %>
-    <% end %>
-  </div>
+  <% end %>
 <% end %>
 
 <%#= turbo_stream.append "messages", "hello" %>
