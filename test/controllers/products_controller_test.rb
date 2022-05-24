@@ -22,12 +22,8 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create product" do
-    p "=== create"
-    pp Product.count
-    pp Product.all
     assert_difference("Product.count") do
       post "/products", params: { product: @update }
-      pp Product.last
     end
     
     assert_redirected_to product_path(assigns(@product))
@@ -44,8 +40,6 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update product" do
-    # p "=== update"
-    # pp @update
     put "/products/#{@product.id}", params: { product: @update.merge(id: @product.id, title: "xxx") }
     assert_redirected_to product_url(@product)
   end
