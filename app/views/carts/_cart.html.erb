@@ -1,9 +1,7 @@
 <div class="cart_title">カート</div>
 <table>
   <div id="line_item">
-    <%= form_with do |form| %>
-      <%= render partial: "line_items/line_item", locals: { line_item: cart.line_items.to_a } %>
-    <% end %>
+    <%= render cart.line_items %>
   </div>
 
   <tr class="total_line">
