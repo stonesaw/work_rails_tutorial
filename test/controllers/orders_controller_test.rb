@@ -10,8 +10,17 @@ class OrdersControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "requires item in cart" do
+    get :new
+    assert_redirected_to store_path
+    assert_equal "カートは空です", flash[:notice]
+  end
+
   test "should get new" do
-    get new_order_url
+    cart = Cart.create
+    LineItem.create(cart: cart, product: products(:ruby))
+
+    get :new, {}, {cart_id: cart.id}
     assert_response :success
   end
 
@@ -20,7 +29,7 @@ class OrdersControllerTest < ActionDispatch::IntegrationTest
       post orders_url, params: { order: { address: @order.address, email: @order.email, name: @order.name, pay_type: @order.pay_type } }
     end
 
-    assert_redirected_to order_url(Order.last)
+    assert_redirected_to store_path
   end
 
   test "should show order" do

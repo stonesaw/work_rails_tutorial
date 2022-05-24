@@ -5,6 +5,7 @@ one:
   cart_id: 1
   product: ruby
   cart: one
+  order: one
 
 two:
   product_id: 1
