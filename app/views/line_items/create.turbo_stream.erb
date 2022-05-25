@@ -4,4 +4,7 @@
   <% end %>
 <% end %>
 
-<%#= turbo_stream.append "messages", "hello" %>
+
+<%= turbo_stream.replace "notice" do %>
+  <p id="notice" style="display: none"><%= notice %></p>
+<% end %>
