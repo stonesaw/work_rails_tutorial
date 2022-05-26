@@ -40,7 +40,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update product" do
-    put "/products/#{@product.id}", params: { product: @update.merge(id: @product.id, title: "xxx") }
+    put product_url(@product), params: { product: @update.merge(id: @product.id, title: "xxx") }
     assert_redirected_to product_url(@product)
   end
 

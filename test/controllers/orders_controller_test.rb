@@ -11,7 +11,7 @@ class OrdersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "requires item in cart" do
-    get "/orders/new"
+    get new_order_url
     assert_redirected_to store_path
     assert_equal "カートは空です", flash[:notice]
   end
