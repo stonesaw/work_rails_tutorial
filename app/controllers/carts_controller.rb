@@ -60,10 +60,11 @@ class CartsController < ApplicationController
 
   # DELETE /carts/1 or /carts/1.json
   def destroy
+    session[:cart_id] = params[:cart_id]
     @cart = current_cart
     @cart.destroy
     session[:cart_id] = nil
-
+    
     respond_to do |format|
       format.html { redirect_to store_url }
       format.json { head :ok }

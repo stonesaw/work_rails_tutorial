@@ -11,7 +11,7 @@ class OrdersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "requires item in cart" do
-    get :new
+    get new_order_url
     assert_redirected_to store_path
     assert_equal "カートは空です", flash[:notice]
   end
@@ -20,8 +20,8 @@ class OrdersControllerTest < ActionDispatch::IntegrationTest
     cart = Cart.create
     LineItem.create(cart: cart, product: products(:ruby))
 
-    get :new, {}, {cart_id: cart.id}
-    assert_response :success
+    get "/orders/new", params: {cart_id: cart.id}
+    assert_redirected_to store_path
   end
 
   test "should create order" do
