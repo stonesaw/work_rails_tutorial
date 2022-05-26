@@ -26,7 +26,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
       post "/products", params: { product: @update }
     end
     
-    assert_redirected_to product_path(assigns(@product))
+    assert_redirected_to product_path(assigns(:product))
   end
 
   test "should show product" do

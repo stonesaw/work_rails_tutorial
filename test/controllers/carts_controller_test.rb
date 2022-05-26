@@ -40,7 +40,7 @@ class CartsControllerTest < ActionDispatch::IntegrationTest
 
   test "should destroy cart" do
     assert_difference("Cart.count", -1) do
-      delete "/line_items/#{@cart.id}"
+      delete "/carts/#{@cart.id}", params: {cart_id: @cart.id}
     end
 
     assert_redirected_to store_path
