@@ -1,12 +1,21 @@
-<p style="color: green"><%= notice %></p>
+<h1>Listing Users</h1>
 
-<h1>Users</h1>
+<% if notice %>
+<p id="notice"><%= notice %></p>
+<% end %>
+
 
 <div id="users">
   <% @users.each do |user| %>
     <%= render user %>
     <p>
-      <%= link_to "Show this user", user %>
+      <%= link_to "Show", user %>
+    </p>
+    <p>
+      <%= link_to "Edit", user %>
+    </p>
+    <p>
+      <%= link_to "Destroy", user, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
     </p>
   <% end %>
 </div>
