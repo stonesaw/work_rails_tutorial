@@ -1,39 +1,44 @@
 <%= form_with(model: order, local: true, data: { turbo: false }) do |form| %>
   <% if order.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(order.errors.count, "error") %> prohibited this order from being saved:</h2>
+    <div id="error_explanation" style="color: red">
+      <h2><%= raw t("errors.template.header", 
+                    count: @order.errors.count, 
+                    model: t("activerecord.models.order")) 
+          %>.
+      </h2>
+      <p><%= t("errors.template.body") %></p>
 
       <ul>
         <% order.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+          <li><%= raw error.full_message %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
 
   <div class="field">
-    <%= form.label :name, style: "display: block" %>
+    <%= form.label :name, t("order.form.name"), style: "display: block" %>
     <%= form.text_field :name, size: 40 %>
   </div>
 
   <div class="field">
-    <%= form.label :address, style: "display: block" %>
+    <%= form.label :address, t("order.form.address"), style: "display: block" %>
     <%= form.text_area :address, rows: 3, cols: 40 %>
   </div>
 
   <div class="field">
-    <%= form.label :email, style: "display: block" %>
+    <%= form.label :email, t("order.form.email"), style: "display: block" %>
     <%= form.text_field :email, size: 40 %>
   </div>
 
   <div class="field">
-    <%= form.label :pay_type, style: "display: block" %>
-    <%= form.select :pay_type, Order::PAYMENT_TYPES, prompt: "お支払方法を選択してください" %>
+    <%= form.label :pay_type, t("order.form.pay_type"), style: "display: block" %>
+    <%= form.select :pay_type, Order::PAYMENT_TYPES, prompt: t("order.form.pay_prompt_html") %>
   </div>
 
   <div>
     <div class="action">
-      <%= form.submit %>
+      <%= form.submit t("order.form.submit") %>
     </div>
   </div>
 <% end %>

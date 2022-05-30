@@ -12,8 +12,16 @@
 
   <body class="<%= controller.controller_name %>">
     <div id="banner">
+      <%= form_tag store_path, method: :get, local: true, class: "locale" do %>
+        <%= select_tag "set_locale",
+          options_for_select(LANGUAGE, I18n.locale.to_s),
+          onchange: "this.form.submit()" %>
+        <%# TODO %>
+        <%#= submit_tag "submit" %>
+        <%#= javascript_tag "$('.locale input').hide()" %>
+      <% end %>
       <%= image_tag("ruby.jpg", class: "logo") %>
-      <%= @page_title || "Pragmatic Bookshelf" %>
+      <%= @page_title || t("layout.application.title") %>
     </div>
     <div id="columns">
       <div id="side">
@@ -26,10 +34,10 @@
         </div>
 
         <ul>
-          <li><a href="#">ホーム</a></li>
-          <li><a href="#">よくある質問</a></li>
-          <li><a href="#">ニュース</a></li>
-          <li><a href="#">お問い合わせ</a></li>
+          <li><a href="#"><%= t("layout.application.home") %></a></li>
+          <li><a href="#"><%= t("layout.application.questions") %></a></li>
+          <li><a href="#"><%= t("layout.application.news") %></a></li>
+          <li><a href="#"><%= t("layout.application.contact") %></a></li>
         </ul>
 
         <% if session[:user_id] %>
