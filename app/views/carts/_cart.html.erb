@@ -1,5 +1,5 @@
 <% unless cart.line_items.empty? %>
-  <div class="cart_title">カート</div>
+  <div class="cart_title"><%= t("carts.cart.title") %></div>
   <table>
     <div id="line_item">
       <%= render cart.line_items %>
@@ -11,7 +11,7 @@
     </tr>
   </table>
 
-  <%= button_to "チェックアウト", new_order_path, method: :get %>
-  <%= button_to 'カートを空にする', cart, method: :delete, 
-      confirm: '本当によいですか？' %>
+  <%= button_to t("carts.cart.checkout"), new_order_path, method: :get %>
+  <%= button_to t("carts.cart.empty"), cart, method: :delete, 
+      confirm: 'Are you sure ?' %>
 <% end %>
