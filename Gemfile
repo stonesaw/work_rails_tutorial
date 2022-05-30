@@ -47,6 +47,8 @@ gem "sassc-rails"
 
 gem 'will_paginate', '~> 3.3'
 
+gem "capistrano"
+
 group :development, :test do
   # Use sqlite3 as the database for Active Record
   gem "sqlite3", "~> 1.4"
