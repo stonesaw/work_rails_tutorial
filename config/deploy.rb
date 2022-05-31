@@ -2,7 +2,7 @@
 lock "~> 3.17.0"
 
 set :application, "depot"
-set :repo_url, "ssh://sou@DESKTOP-5DQ6637-wsl/~/git/depot"
+set :repo_url, "ssh://sou@DESKTOP-5DQ6637-wsl/~/git/depot.git"
 
 # append :linked_files, "config/master.key"
 
