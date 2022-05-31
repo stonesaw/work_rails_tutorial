@@ -59,3 +59,13 @@
 #     auth_methods: %w(publickey password)
 #     # password: "please use keys"
 #   }
+
+server "depot.yourhost.com", roles: %w{app web db}
+set :rails_env, "production"
+set :app_env, "production"
+set :branch, :main
+
+set :ssh_options, {
+    keys: %w(/home/sou/.ssh/id_ed25519),  # ssh 接続に使う秘密鍵のパスを記述
+    forward_agent: true,
+}

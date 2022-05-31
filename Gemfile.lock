@@ -71,6 +71,7 @@ GEM
     airbrussh (1.4.0)
       sshkit (>= 1.6.1, != 1.7.0)
     bcrypt (3.1.18)
+    bcrypt_pbkdf (1.1.0)
     bindex (0.8.1)
     bootsnap (1.11.1)
       msgpack (~> 1.2)
@@ -88,6 +89,8 @@ GEM
     capistrano-rbenv (2.2.0)
       capistrano (~> 3.1)
       sshkit (~> 1.3)
+    capistrano-safe-deploy-to (1.1.1)
+      capistrano (>= 3.0)
     capybara (3.37.1)
       addressable
       matrix
@@ -104,6 +107,7 @@ GEM
       irb (>= 1.3.6)
       reline (>= 0.2.7)
     digest (3.1.0)
+    ed25519 (1.3.0)
     erubi (1.10.0)
     ffi (1.15.5)
     globalid (1.0.0)
@@ -250,13 +254,16 @@ PLATFORMS
 
 DEPENDENCIES
   bcrypt (~> 3.1.7)
+  bcrypt_pbkdf
   bootsnap
   capistrano
   capistrano-bundler
   capistrano-rails
   capistrano-rbenv
+  capistrano-safe-deploy-to
   capybara
   debug
+  ed25519
   importmap-rails
   jbuilder
   mysql2

@@ -47,10 +47,6 @@ gem "sassc-rails"
 
 gem 'will_paginate', '~> 3.3'
 
-gem "capistrano"
-gem "capistrano-rbenv"
-gem "capistrano-bundler"
-gem "capistrano-rails"
 # gem "capistrano3-unicorn"
 
 group :development, :test do
@@ -61,7 +57,16 @@ group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
 end
 
-group :development do
+group :development do  
+  gem "capistrano"
+  gem "capistrano-rbenv"
+  gem "capistrano-bundler"
+  gem "capistrano-rails"
+  gem 'capistrano-safe-deploy-to'
+
+  gem 'ed25519' 
+  gem 'bcrypt_pbkdf'
+
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
 
