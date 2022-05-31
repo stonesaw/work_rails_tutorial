@@ -48,6 +48,10 @@ gem "sassc-rails"
 gem 'will_paginate', '~> 3.3'
 
 gem "capistrano"
+gem "capistrano-rbenv"
+gem "capistrano-bundler"
+gem "capistrano-rails"
+# gem "capistrano3-unicorn"
 
 group :development, :test do
   # Use sqlite3 as the database for Active Record
