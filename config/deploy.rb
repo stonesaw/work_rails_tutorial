@@ -16,7 +16,7 @@ set :branch, "main"
 # set :rbenv_ruby, ''
 
 # Default value for :format is :airbrussh.
-set :format, :airbrussh
+# set :format, :airbrussh
 
 # You can configure the Airbrussh format using :format_options.
 # These are the defaults.
@@ -27,6 +27,7 @@ set :format, :airbrussh
 
 # Default value for :linked_files is []
 # append :linked_files, "config/database.yml", 'config/master.key'
+append :linked_files, 'config/master.key', 'config/credentials.yml.enc'
 
 # Default value for linked_dirs is []
 # append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "tmp/webpacker", "public/system", "vendor", "storage"
@@ -49,3 +50,27 @@ set :rbenv_ruby, '3.0.0'
 
 set :rbenv_path, '/home/sou/.rbenv'
 # set :bundle_path, -> { shared_path.join('vendor/bundle') }
+
+domain = "depot.yourhost.com"
+
+role :app, domain
+role :web, domain
+role :db, domain, primary: true
+
+namespace :deploy do
+  desc "reload the database width seed data"
+  task :seed do
+    run "cd #{current_path}; bin/rails db:seed RAILSENV=#{rails_env}"
+    run "EDITOR='cat' bin/rails credentials:edit --environment production"
+  end
+end
+
+after "deploy:updated", :bundle_install
+desc "install the necessary prerequisites"
+task :bundle_install do
+  on roles :app do
+    run "cd #{release_path} && bin/bundle install"
+
+    # run "bin/rails credentials:edit"
+  end
+end
