@@ -64,13 +64,3 @@ namespace :deploy do
     run "EDITOR='cat' bin/rails credentials:edit --environment production"
   end
 end
-
-after "deploy:updated", :bundle_install
-desc "install the necessary prerequisites"
-task :bundle_install do
-  on roles :app do
-    run "cd #{release_path} && bin/bundle install"
-
-    # run "bin/rails credentials:edit"
-  end
-end
